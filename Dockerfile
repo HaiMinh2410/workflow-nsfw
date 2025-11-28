@@ -78,7 +78,7 @@ RUN for repo in \
     https://github.com/welltop-cn/ComfyUI-TeaCache.git \
     https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git \
     https://github.com/Jonseed/ComfyUI-Detail-Daemon.git \
-    https://github.com/kijai/ComfyUI-WanVideoWrapper.git \ 
+    https://github.com/kijai/workflow-nsfwVideoWrapper.git \ 
     https://github.com/chflame163/ComfyUI_LayerStyle_Advance.git \
     https://github.com/BadCafeCode/masquerade-nodes-comfyui.git \
     https://github.com/1038lab/ComfyUI-RMBG.git \

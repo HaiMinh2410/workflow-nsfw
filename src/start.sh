@@ -242,12 +242,12 @@ mkdir -p "$WORKFLOW_DIR"
 # Ensure the file exists in the current directory before moving it
 cd /
 
-SOURCE_DIR="/comfyui-wan/workflows"
+SOURCE_DIR="/workflow-nsfw/workflows"
 
 # Ensure destination directory exists
 mkdir -p "$WORKFLOW_DIR"
 
-SOURCE_DIR="/comfyui-wan/workflows"
+SOURCE_DIR="/workflow-nsfw/workflows"
 
 # Ensure destination directory exists
 mkdir -p "$WORKFLOW_DIR"
