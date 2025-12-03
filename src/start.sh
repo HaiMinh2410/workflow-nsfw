@@ -77,7 +77,6 @@ pip install onnxruntime-gpu &
 
 
 
-
 export change_preview_method="true"
 
 
@@ -136,79 +135,82 @@ CHECKPOINT_DIR="$NETWORK_VOLUME/ComfyUI/models/checkpoints"
 
 
 if [ "$download_wan_22_nsfw" == "true" ]; then
-  echo "Downloading wan 22 nsfw models..."
-  download_model "https://huggingface.co/FX-FeiHou/wan2.2-Remix/resolve/main/NSFW/Wan2.2_Remix_NSFW_i2v_14b_high_lighting_v2.0.safetensors" "$DIFFUSION_MODELS_DIR/Wan2.2_Remix_NSFW_i2v_14b_high_lighting_v2.0.safetensors"
-  download_model "https://huggingface.co/FX-FeiHou/wan2.2-Remix/resolve/main/NSFW/Wan2.2_Remix_NSFW_i2v_14b_low_lighting_v2.0.safetensors" "$DIFFUSION_MODELS_DIR/Wan2.2_Remix_NSFW_i2v_14b_low_lighting_v2.0.safetensors"
-  download_model "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/main/Qwen3VL-8B-Instruct-Q8_0.gguf" "$DIFFUSION_MODELS_DIR/Qwen3VL-8B-Instruct-Q8"
 
-  echo "Downloading wan 22 nsfw text encoders..."
-  download_model "https://huggingface.co/NSFW-API/NSFW-Wan-UMT5-XXL/resolve/main/nsfw_wan_umt5-xxl_fp8_scaled.safetensors" "$TEXT_ENCODERS_DIR/nsfw_wan_umt5-xxl_fp8_scaled.safetensors"
+    echo "Downloading wan 22 nsfw models..."
+    download_model "https://huggingface.co/FX-FeiHou/wan2.2-Remix/resolve/main/NSFW/Wan2.2_Remix_NSFW_i2v_14b_high_lighting_v2.0.safetensors" "$DIFFUSION_MODELS_DIR/Wan2.2_Remix_NSFW_i2v_14b_high_lighting_v2.0.safetensors"
+    download_model "https://huggingface.co/FX-FeiHou/wan2.2-Remix/resolve/main/NSFW/Wan2.2_Remix_NSFW_i2v_14b_low_lighting_v2.0.safetensors" "$DIFFUSION_MODELS_DIR/Wan2.2_Remix_NSFW_i2v_14b_low_lighting_v2.0.safetensors"
+
+    echo "Downloading Wan Animate nsfw VAE..."
+    download_model "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors" "$VAE_DIR/Wan2_1_VAE_bf16.safetensors"
+
+    echo "Downloading wan 22 nsfw text encoders..."
+    download_model "https://huggingface.co/NSFW-API/NSFW-Wan-UMT5-XXL/resolve/main/nsfw_wan_umt5-xxl_fp8_scaled.safetensors" "$TEXT_ENCODERS_DIR/nsfw_wan_umt5-xxl_fp8_scaled.safetensors"
+
+    echo "Downloading wan 22 nsfw clip vision..."
+    mkdir -p "$CLIP_VISION_DIR"
+    download_model "https://huggingface.co/ricecake/wan21NSFWClipVisionH_v10/resolve/main/wan21NSFWClipVisionH_v10.safetensors" "$CLIP_VISION_DIR/wan21NSFWClipVisionH_v10.safetensors"
 fi
 
 if [ "$download_Wan_Animate_nsfw" == "true" ]; then
-  echo "Downloading Wan Animate nsfw models..."
 
-  download_model "https://huggingface.co/QuantStack/Wan2.2-Animate-14B-GGUF/resolve/main/Wan2.2-Animate-14B-Q8_0.gguf" "$DIFFUSION_MODELS_DIR/Wan2.2-Animate-14B-Q8_0.gguf"
+    echo "Downloading Wan Animate nsfw models..."
+    download_model "https://huggingface.co/QuantStack/Wan2.2-Animate-14B-GGUF/resolve/main/Wan2.2-Animate-14B-Q8_0.gguf" "$DIFFUSION_MODELS_DIR/Wan2.2-Animate-14B-Q8_0.gguf"
 
-  download_model "https://huggingface.co/eddy1111111/Wan_toolkit/resolve/main/lightx2v_elite_it2v_animate_face.safetensors" "$VAE_DIR/lightx2v_elite_it2v_animate_face.safetensors"
-  download_model "https://huggingface.co/eddy1111111/Wan_toolkit/resolve/main/Wan2.2-Fun-A14B-InP-Fusion-Elite.safetensors" "$VAE_DIR/Wan2.2-Fun-A14B-InP-Fusion-Elite.safetensors"
-  download_model "https://huggingface.co/alibaba-pai/Wan2.2-Fun-Reward-LoRAs/resolve/main/Wan2.2-Fun-A14B-InP-low-noise-HPS2.1.safetensors" "$VAE_DIR/Wan2.2-Fun-A14B-InP-low-noise-HPS2.1.safetensors"
+    echo "Downloading Wan Animate nsfw loras..."
+    download_model "https://huggingface.co/eddy1111111/Wan_toolkit/resolve/main/lightx2v_elite_it2v_animate_face.safetensors" "$LORAS_DIR/lightx2v_elite_it2v_animate_face.safetensors"
+    download_model "https://huggingface.co/eddy1111111/Wan_toolkit/resolve/main/Wan2.2-Fun-A14B-InP-Fusion-Elite.safetensors" "$LORAS_DIR/Wan2.2-Fun-A14B-InP-Fusion-Elite.safetensors"
+    download_model "https://huggingface.co/alibaba-pai/Wan2.2-Fun-Reward-LoRAs/resolve/main/Wan2.2-Fun-A14B-InP-low-noise-HPS2.1.safetensors" "$LORAS_DIR/Wan2.2-Fun-A14B-InP-low-noise-HPS2.1.safetensors"
 
-  echo "Downloading wan 22 nsfw text encoders..."
-  download_model "https://huggingface.co/NSFW-API/NSFW-Wan-UMT5-XXL/resolve/main/nsfw_wan_umt5-xxl_fp8_scaled.safetensors" "$TEXT_ENCODERS_DIR/nsfw_wan_umt5-xxl_fp8_scaled.safetensors"
+    echo "Downloading Wan Animate nsfw VAE..."
+    download_model "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors" "$VAE_DIR/Wan2_1_VAE_bf16.safetensors"
+
+    echo "Downloading wan 22 nsfw text encoders..."
+    download_model "https://huggingface.co/NSFW-API/NSFW-Wan-UMT5-XXL/resolve/main/nsfw_wan_umt5-xxl_fp8_scaled.safetensors" "$TEXT_ENCODERS_DIR/nsfw_wan_umt5-xxl_fp8_scaled.safetensors"
+
+    echo "Downloading wan 22 nsfw clip vision..."
+    mkdir -p "$CLIP_VISION_DIR"
+    download_model "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors" "$CLIP_VISION_DIR/clip_vision_h.safetensors"
 fi
 
 if [ "$download_sdxl_inpaint_nsfw" == "true" ]; then
+
   echo "Downloading sdxl inpaint nsfw models..."
   download_model "https://huggingface.co/dci05049/sdxl/resolve/main/lustify-inpainting-olt.safetensors" "$CHECKPOINT_DIR/lustify-inpainting-olt.safetensors"
 fi
 
 if [ "$download_Qwen_image_realistic" == "true" ]; then
-  echo "Downloading Qwen image realistic models..."
 
-  download_model "https://huggingface.co/frankjoshua/qwen_image_fp8_e4m3fn/resolve/main/qwen_image_fp8_e4m3fn.safetensors" "$DIFFUSION_MODELS_DIR/qwen_image_fp8_e4m3fn.safetensors"
+    echo "Downloading Qwen image realistic models..."
+    download_model "https://huggingface.co/frankjoshua/qwen_image_fp8_e4m3fn/resolve/main/qwen_image_fp8_e4m3fn.safetensors" "$DIFFUSION_MODELS_DIR/qwen_image_fp8_e4m3fn.safetensors"
 
-  download_model "https://huggingface.co/starsfriday/Qwen-Image-NSFW/resolve/main/qwen_image_nsfw.safetensors" "$VAE_DIR/qwen_image_nsfw.safetensors"
-  download_model "https://huggingface.co/Osrivers/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors/resolve/main/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors" "$VAE_DIR/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors"
-  download_model "https://huggingface.co/Danrisi/Qwen-image_SamsungCam_UltraReal/resolve/main/Samsung.safetensors" "$VAE_DIR/Qwen-image_SamsungCam_UltraReal"
-  download_model "https://huggingface.co/Qwen/Qwen-Image/resolve/main/vae/diffusion_pytorch_model.safetensors" "$VAE_DIR/qwen_image_vae"
-  
-  download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors" "$CHECKPOINT_DIR/qwen_2.5_vl_7b_fp8_scaled.safetensors"
-  download_model "https://huggingface.co/bartowski/thesby_Qwen2.5-VL-7B-NSFW-Caption-V3-GGUF/resolve/main/thesby_Qwen2.5-VL-7B-NSFW-Caption-V3-Q8_0.gguf" "$CHECKPOINT_DIR/Qwen2.5-VL-7B-NSFW-Caption-V3-Q8_0.gguf"
+    echo "Downloading Qwen image realistic loras..."
+    download_model "https://huggingface.co/starsfriday/Qwen-Image-NSFW/resolve/main/qwen_image_nsfw.safetensors" "$LORAS_DIR/qwen_image_nsfw.safetensors"
+    download_model "https://huggingface.co/Osrivers/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors/resolve/main/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors" "$LORAS_DIR/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors"
+    download_model "https://huggingface.co/Danrisi/Qwen-image_SamsungCam_UltraReal/resolve/main/Samsung.safetensors" "$LORAS_DIR/Qwen-image_SamsungCam_UltraReal.safetensors"
+
+    echo "Downloading Qwen image realistic vae..."
+    download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors" "$VAE_DIR/qwen_image_vae.safetensors"
+
+    echo "Downloading Qwen image realistic clips..."
+    download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors" "$CLIP_DIR/qwen_2.5_vl_7b_fp8_scaled.safetensors"
+    download_model "https://huggingface.co/bartowski/thesby_Qwen2.5-VL-7B-NSFW-Caption-V3-GGUF/resolve/main/thesby_Qwen2.5-VL-7B-NSFW-Caption-V3-Q8_0.gguf" "$CLIP_DIR/Qwen2.5-VL-7B-NSFW-Caption-V3-Q8_0.gguf"
+
+    echo "Downloading controlnet models..."
+    download_model "https://huggingface.co/InstantX/Qwen-Image-ControlNet-Union/resolve/main/diffusion_pytorch_model.safetensors" "$CONTROL_DIR/InstantX-QwenImage-Controlnet-Union.safetensors"
 fi
 
-echo "Downloading models..."
 
-download_model "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/main/Qwen3VL-8B-Instruct-Q8_0.gguf" "$DIFFUSION_MODELS_DIR/Qwen3VL-8B-Instruct-Q8"
-# Download text encoders
 
 echo "Downloading text encoders..."
-
 download_model "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors" "$TEXT_ENCODERS_DIR/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
 
 
-# Create CLIP vision directory and download models
-mkdir -p "$CLIP_VISION_DIR"
-download_model "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors" "$CLIP_VISION_DIR/clip_vision_h.safetensors"
-
-# Download VAE
-echo "Downloading VAE..."
-download_model "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors" "$VAE_DIR/Wan2_1_VAE_bf16.safetensors"
-
-download_model "https://huggingface.co/highminh/model002/resolve/main/model002_low_noise.safetensors" "$VAE_DIR/model002_low_noise.safetensors"
-
-download_model "https://huggingface.co/highminh/model002/resolve/main/model002_high_noise.safetensors" "$VAE_DIR/model002_high_noise.safetensors"
-
-download_model "https://huggingface.co/highminh/model002/resolve/main/model002-36.safetensors" "$VAE_DIR/model002-36.safetensors"
-
-download_model "https://huggingface.co/highminh/model002/resolve/main/model002.safetensors" "$VAE_DIR/model002.safetensors"
-
-echo "Downloading controlnet models..."
-
-download_model "https://huggingface.co/InstantX/Qwen-Image-ControlNet-Union/resolve/main/diffusion_pytorch_model.safetensors" "$CONTROL_DIR/InstantX-QwenImage-Controlnet-Union"
+echo "Downloading loras..."
+download_model "https://huggingface.co/highminh/model002/resolve/main/model002_low_noise.safetensors" "$LORAS_DIR/model002_low_noise.safetensors"
+download_model "https://huggingface.co/highminh/model002/resolve/main/model002_high_noise.safetensors" "$LORAS_DIR/model002_high_noise.safetensors"
+download_model "https://huggingface.co/highminh/model002/resolve/main/model002-36.safetensors" "$LORAS_DIR/model002-36.safetensors"
 
 
-# Download detection models for WanAnimatePreprocess
 echo "Downloading detection models..."
 mkdir -p "$DETECTION_DIR"
 download_model "https://huggingface.co/Wan-AI/Wan2.2-Animate-14B/resolve/main/process_checkpoint/det/yolov10m.onnx" "$DETECTION_DIR/yolov10m.onnx"
@@ -265,39 +267,6 @@ echo "✅ All models downloaded successfully!"
 echo "All downloads completed!"
 
 
-
-echo "Checking and copying workflow..."
-mkdir -p "$WORKFLOW_DIR"
-
-# Ensure the file exists in the current directory before moving it
-cd /
-
-SOURCE_DIR="/workflow-nsfw/workflows"
-
-# Ensure destination directory exists
-mkdir -p "$WORKFLOW_DIR"
-
-SOURCE_DIR="/workflow-nsfw/workflows"
-
-# Ensure destination directory exists
-mkdir -p "$WORKFLOW_DIR"
-
-# Loop over each subdirectory in the source directory
-for dir in "$SOURCE_DIR"/*/; do
-    # Skip if no directories match (empty glob)
-    [[ -d "$dir" ]] || continue
-
-    dir_name="$(basename "$dir")"
-    dest_dir="$WORKFLOW_DIR/$dir_name"
-
-    if [[ -e "$dest_dir" ]]; then
-        echo "Directory already exists in destination. Deleting source: $dir"
-        rm -rf "$dir"
-    else
-        echo "Moving: $dir to $WORKFLOW_DIR"
-        mv "$dir" "$WORKFLOW_DIR/"
-    fi
-done
 
 if [ "$change_preview_method" == "true" ]; then
     echo "Updating default preview method..."
