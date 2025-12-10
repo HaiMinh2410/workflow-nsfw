@@ -132,6 +132,7 @@ LORAS_DIR="$NETWORK_VOLUME/ComfyUI/models/loras"
 DETECTION_DIR="$NETWORK_VOLUME/ComfyUI/models/detection"
 CONTROL_DIR="$NETWORK_VOLUME/ComfyUI/models/controlnet"
 CHECKPOINT_DIR="$NETWORK_VOLUME/ComfyUI/models/checkpoints"
+MODEL_PATCHES_DIR="$NETWORK_VOLUME/ComfyUI/models/model_patches"
 
 
 if [ "$download_wan_22_nsfw" == "true" ]; then
@@ -199,6 +200,25 @@ if [ "$download_Qwen_image_realistic" == "true" ]; then
     download_model "https://huggingface.co/InstantX/Qwen-Image-ControlNet-Union/resolve/main/diffusion_pytorch_model.safetensors" "$CONTROL_DIR/InstantX-QwenImage-Controlnet-Union.safetensors"
 fi
 
+if [ "$download_Z_image" == "true" ]; then
+
+    echo "Downloading Z image realistic models..."
+    download_model "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors" "$DIFFUSION_MODELS_DIR/z_image_turbo_bf16.safetensors"
+
+    echo "Downloading Z image realistic loras..."
+    download_model "https://huggingface.co/Danrisi/Lenovo_UltraReal_Z_Image/resolve/main/lenovo_z.safetensors" "$LORAS_DIR/lenovo_z.safetensors"
+
+    echo "Downloading Z image realistic vae..."
+    download_model "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors" "$VAE_DIR/ae.safetensors"
+
+    echo "Downloading Z image realistic text encode..."
+    download_model "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors" "$TEXT_ENCODERS_DIR/qwen_3_4b.safetensors"
+
+
+    echo "Downloading controlnet models..."
+    download_model "https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union.safetensors" "$MODEL_PATCHES_DIR/Z-Image-Turbo-Fun-Controlnet-Union.safetensors"
+fi
+
 
 
 echo "Downloading text encoders..."
@@ -209,6 +229,7 @@ echo "Downloading loras..."
 download_model "https://huggingface.co/highminh/model002/resolve/main/model002_low_noise.safetensors" "$LORAS_DIR/model002_low_noise.safetensors"
 download_model "https://huggingface.co/highminh/model002/resolve/main/model002_high_noise.safetensors" "$LORAS_DIR/model002_high_noise.safetensors"
 download_model "https://huggingface.co/highminh/model002/resolve/main/model002-36.safetensors" "$LORAS_DIR/model002-36.safetensors"
+download_model "https://huggingface.co/highminh/model/resolve/main/model002_differential.safetensors" "$LORAS_DIR/model002_differential.safetensors"
 
 
 echo "Downloading detection models..."
