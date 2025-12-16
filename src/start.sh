@@ -204,12 +204,15 @@ if [ "$download_Z_image" == "true" ]; then
 
     echo "Downloading Z image realistic models..."
     download_model "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors" "$DIFFUSION_MODELS_DIR/z_image_turbo_bf16.safetensors"
-    download_model "https://huggingface.co/tewea/z_image_turbo_bf16_nsfw/resolve/main/z_image_turbo_bf16_nsfw_v2.safetensors" "$DIFFUSION_MODELS_DIR/z_image_turbo_bf16_nsfw_v2.safetensors"
+    download_model "https://huggingface.co/highminh/Z_lora/resolve/main/unstableRevolution_Bf16.safetensors" "$DIFFUSION_MODELS_DIR/unstableRevolution_Bf16.safetensors"
 
     echo "Downloading Z image realistic loras..."
     download_model "https://huggingface.co/Danrisi/Lenovo_UltraReal_Z_Image/resolve/main/lenovo_z.safetensors" "$LORAS_DIR/lenovo_z.safetensors"
     download_model "https://huggingface.co/highminh/Tutu/resolve/main/Tutu's%20HiSilk%20Fishnet%20Stockings%20-%20Z-Image-Turbo.safetensors" "$LORAS_DIR/Tutu's%20HiSilk%20Fishnet%20Stockings%20-%20Z-Image-Turbo.safetensors"
     download_model "https://huggingface.co/highminh/Tutu/resolve/main/Tutu's%20half-leg%20aurora%20black%20stockings_Zimg_V1.safetensors" "$LORAS_DIR/Tutu's%20half-leg%20aurora%20black%20stockings_Zimg_V1.safetensors"
+    download_model "https://huggingface.co/highminh/Z_lora/resolve/main/Apple_QuickTake_150_Digital_Camera_Style.safetensors" "$LORAS_DIR/Apple_QuickTake_150_Digital_Camera_Style.safetensors"
+    download_model "https://huggingface.co/highminh/Z_lora/resolve/main/GalaxyAce_v1.safetensors" "$LORAS_DIR/GalaxyAce_v1.safetensors"
+    download_model "https://huggingface.co/highminh/Z_lora/resolve/main/Jib_Mix_Realistic%20V1.safetensors" "$LORAS_DIR/Jib_Mix_Realistic%20V1.safetensors"
 
     echo "Downloading Z image realistic vae..."
     download_model "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors" "$VAE_DIR/ae.safetensors"
